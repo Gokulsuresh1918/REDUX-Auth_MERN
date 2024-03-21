@@ -14,7 +14,7 @@ connectDB();
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:5173", // replace with your client's origin
+    origin: "http://localhost:5173", 
     credentials: true,
     exposedHeaders: ["set-cookie"],
   })

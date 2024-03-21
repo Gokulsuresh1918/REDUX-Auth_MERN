@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,32 +6,32 @@ import { registerUser } from "../slices/userSlice";
 import { setCredentials } from "../slices/authSlice";
 import toast from "react-hot-toast";
 const SignUpForm = () => {
-      const [name, setname] = useState("");
-      const [email, setEmail] = useState("");
-      const [password, setPassword] = useState("");
-      const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-      const { userInfo } = useSelector(state => state.auth);
+  const { userInfo } = useSelector((state) => state.auth);
 
-      const dispatch = useDispatch();
-      const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-      useEffect(() => {
-        if (userInfo) {
-          navigate("/", { replace: true });
-        }
-      }, [navigate, userInfo]);
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/", { replace: true });
+    }
+  }, [navigate, userInfo]);
 
-      const handleSubmit = e => {
-        e.preventDefault();
-        if (password !== confirmPassword) {
-          toast.error("Passwords do not match");
-        } else {
-          dispatch(registerUser({ name, email, password })).then(res => {
-            dispatch(setCredentials(res.payload));
-          });
-        }
-      };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+    } else {
+      dispatch(registerUser({ name, email, password })).then((res) => {
+        dispatch(setCredentials(res.payload));
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
@@ -47,7 +47,7 @@ const SignUpForm = () => {
                 <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                   <div className="relative">
                     <input
-                      onChange={e => setname(e.target.value)}
+                      onChange={(e) => setname(e.target.value)}
                       autoComplete="off"
                       id="name"
                       name="name"
@@ -64,7 +64,7 @@ const SignUpForm = () => {
                   </div>
                   <div className="relative">
                     <input
-                      onChange={e => setEmail(e.target.value)}
+                      onChange={(e) => setEmail(e.target.value)}
                       autoComplete="off"
                       id="email"
                       name="email"
@@ -81,7 +81,7 @@ const SignUpForm = () => {
                   </div>
                   <div className="relative">
                     <input
-                      onChange={e => setPassword(e.target.value)}
+                      onChange={(e) => setPassword(e.target.value)}
                       autoComplete="off"
                       id="password"
                       name="password"
@@ -98,7 +98,7 @@ const SignUpForm = () => {
                   </div>
                   <div className="relative">
                     <input
-                      onChange={e => setConfirmPassword(e.target.value)}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
                       autoComplete="off"
                       id="ConfirmPassword"
                       name="ConfirmPassword"
@@ -131,6 +131,6 @@ const SignUpForm = () => {
       </div>
     </div>
   );
-}
+};
 
-export default SignUpForm
+export default SignUpForm;

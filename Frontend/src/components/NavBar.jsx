@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { logout } from "../slices/authSlice";   
+import { logout } from "../slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../slices/userSlice";
 const NavBar = () => {
-  const { userInfo } = useSelector(state => state.auth);
-    const[menu,setMenu]=useState(false)
+  const { userInfo } = useSelector((state) => state.auth);
+  const [menu, setMenu] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const logoutHandler = () => {
-    dispatch(logoutUser()).then(res => {
+    dispatch(logoutUser()).then((res) => {
       dispatch(logout());
       navigate("/login");
     });
